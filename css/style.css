@@ -49,14 +49,14 @@ h1 {
     margin-inline-end: 1rem;
 }
 
-.difficulty_box label,
-.difficulty_box select,
+label,
+#mode,
 button,
 footer {
     font-size: 1.5rem;
 }
 
-.difficulty_box select {
+#mode {
     border: none;
     border-right: 1px solid black;
     border-left: 1px solid black;
@@ -80,9 +80,7 @@ main {
     flex-wrap: wrap;
 }
 
-.cell-7x7,
-.cell-9x9,
-.cell-10x10 {
+.cell {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,15 +88,15 @@ main {
     aspect-ratio: 1 / 1;
 }
 
-.cell-7x7 {
+.cell.n49 {
     flex: 0 0 calc(100% / 7);
 }
 
-.cell-9x9 {
+.cell.n81 {
     flex: 0 0 calc(100% / 9);
 }
 
-.cell-10x10 {
+.cell.n100 {
     flex: 0 0 calc(100% / 10);
 }
 

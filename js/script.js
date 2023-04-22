@@ -1,27 +1,36 @@
+// variables
+const easy = 49;
+const gridEasy = `n${easy}`;
+const medium = 81;
+const gridMedium = `n${medium}`;
+const hard = 100;
+const gridHard = `n${hard}`;
+const grid = document.querySelector(".grid");
+
+// functions
 function play() {
-    const grid = document.querySelector(".grid");
     const mode = document.querySelector("#mode").value.toLowerCase();
     const cellNumber = difficulty(mode);
-
     grid.innerHTML = "";
-
-    for (let i = 1; i <= cellNumber; i++) {
-        const cell = document.createElement("div");
-        cell.classList.add(cellNumber === 49 ? "cell-7x7" : cellNumber === 81 ? "cell-9x9" : cellNumber === 100 ? "cell-10x10" : 0);
-        cell.innerHTML = `${i}`;
-        grid.appendChild(cell);
-        cell.addEventListener('click', function () {
-            this.classList.toggle('active');
-        });
-        flag = true;
-    }
+    generate(cellNumber);
 }
 
 function difficulty(diff) {
-    return diff === "facile" ? 49
-        : diff === "medio" ? 81
-            : diff === "difficile" ? 100
-                : 0;
+    return diff === "facile" ? easy
+        : diff === "medio" ? medium
+            : hard;
+}
+
+function generate(cells) {
+    for (let i = 1; i <= cells; i++) {
+        const newCell = document.createElement("div");
+        newCell.classList.add("cell", cells === easy ? gridEasy : cells === medium ? gridMedium : gridHard);
+        newCell.innerHTML = `${i}`;
+        grid.appendChild(newCell);
+        newCell.addEventListener('click', function () {
+            this.classList.toggle('active');
+        });
+    }
 }
 
 
