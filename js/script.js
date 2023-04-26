@@ -1,10 +1,7 @@
 // variables
 const easy = 100;
-const gridEasy = `n${easy}`;
 const medium = 81;
-const gridMedium = `n${medium}`;
 const hard = 49;
-const gridHard = `n${hard}`;
 const grid = document.querySelector(".grid");
 
 // functions
@@ -12,7 +9,7 @@ function play() {
     const mode = document.querySelector("#mode").value.toLowerCase();
     const cellNumber = difficulty(mode);
     grid.innerHTML = "";
-    generate(cellNumber);
+    generate(cellNumber, grid);
 }
 
 function difficulty(diff) {
@@ -21,14 +18,18 @@ function difficulty(diff) {
             : hard;
 }
 
-function generate(cells) {
+function generate(cells, grid) {
     for (let i = 1; i <= cells; i++) {
         const newCell = document.createElement("div");
-        newCell.classList.add("cell", cells === easy ? gridEasy : cells === medium ? gridMedium : gridHard);
+        newCell.classList.add("cell");
         newCell.innerHTML = `${i}`;
+
         grid.appendChild(newCell);
+        grid.style.setProperty("--sideSquare", Math.sqrt(cells));
+
         newCell.addEventListener('click', function () {
             this.classList.toggle('active');
+            console.log(`Hai premuto la cella ${this.innerHTML}`);
         });
     }
 }
