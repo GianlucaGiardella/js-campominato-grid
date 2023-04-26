@@ -1,9 +1,9 @@
 // variables
-const easy = 49;
+const easy = 100;
 const gridEasy = `n${easy}`;
 const medium = 81;
 const gridMedium = `n${medium}`;
-const hard = 100;
+const hard = 49;
 const gridHard = `n${hard}`;
 const grid = document.querySelector(".grid");
 
@@ -32,6 +32,3 @@ function generate(cells) {
         });
     }
 }
-
-
-
